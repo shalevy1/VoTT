@@ -3,7 +3,7 @@ set -eou pipefail
 
 # NOTE: this script should be ran from the root of the repository; the CWD should reflect this
 REGISTRY=upskillBedrockRegistry
-VERSION=latest # $(npm version patch)
+VERSION=latest
 CONTAINER_NAME=vott-container
 AZURE_SUB_NAME="PELITTLE TEAM - CSE DWR"
 AZURE_SUB_ID=d36d0808-a967-4f73-9fdc-32ea232fc81d
