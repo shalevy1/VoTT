@@ -1,0 +1,10 @@
+version: '2.1'
+
+services:
+  vott-v2-release:
+    image: vott-v2-release
+    build: .
+    environment:
+      NODE_ENV: production
+    ports:
+      - 80:80
