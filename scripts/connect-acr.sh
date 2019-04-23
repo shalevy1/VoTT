@@ -19,3 +19,14 @@ az account set --subscription ${AZURE_SUB_ID}
 
 echo "Logging into ACR ${REGISTRY}"
 az acr login --name ${REGISTRY}
+
+echo "Building image ${CONTAINER_NAME}:${VERSION}..."
+docker build --no-cache -t ${CONTAINER_NAME}:${VERSION} -t ${CONTAINER_NAME}:latest ../.
+
+echo "Tagging image ${CONTAINER_NAME} ${REGISTRY}.azurecr.io/${CONTAINER_NAME}:${VERSION} and latest"
+docker tag ${CONTAINER_NAME} ${REGISTRY}.azurecr.io/${CONTAINER_NAME}:${VERSION}
+docker tag ${CONTAINER_NAME} ${REGISTRY}.azurecr.io/${CONTAINER_NAME}:latest
+
+echo "Pushing image to: ${REGISTRY}.azurecr.io/${CONTAINER_NAME} and ${CONTAINER_NAME}:latest"
+docker push ${REGISTRY}.azurecr.io/${CONTAINER_NAME}:${VERSION}
+docker push ${REGISTRY}.azurecr.io/${CONTAINER_NAME}:latest
