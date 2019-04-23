@@ -58,30 +58,30 @@ steps:
     npm run build
 
     # echo "Setting Azure subscription to: ${AZURE_SUB_NAME}"
-    # az account set --subscription ${AZURE_SUB_ID}
+    az account set --subscription ${AZURE_SUB_ID}
 
-    # echo "Logging into ACR ${REGISTRY}"
-    # az acr login --name ${REGISTRY}
+    echo "Logging into ACR ${REGISTRY}"
+    az acr login --name ${REGISTRY}
 
     # docekr build --rm -f Dockerfile -t vott-container:latest .
 
-    # echo "Building image ${CONTAINER_NAME}:${VERSION}..."
-    # docker build --no-cache -t ${CONTAINER_NAME}:${VERSION} -t ${CONTAINER_NAME}:latest .
+    echo "Building image ${CONTAINER_NAME}:${VERSION}..."
+    docker build --no-cache -t ${CONTAINER_NAME}:${VERSION} -t ${CONTAINER_NAME}:latest .
 
-    # echo "Tagging image ${CONTAINER_NAME} ${REGISTRY}.azurecr.io/${CONTAINER_NAME}:${VERSION} and latest"
-    # docker tag ${CONTAINER_NAME} ${REGISTRY}.azurecr.io/${CONTAINER_NAME}:${VERSION}
-    # docker tag ${CONTAINER_NAME} ${REGISTRY}.azurecr.io/${CONTAINER_NAME}:latest
+    echo "Tagging image ${CONTAINER_NAME} ${REGISTRY}.azurecr.io/${CONTAINER_NAME}:${VERSION} and latest"
+    docker tag ${CONTAINER_NAME} ${REGISTRY}.azurecr.io/${CONTAINER_NAME}:${VERSION}
+    docker tag ${CONTAINER_NAME} ${REGISTRY}.azurecr.io/${CONTAINER_NAME}:latest
 
-    # echo "Pushing image to: ${REGISTRY}.azurecr.io/${CONTAINER_NAME} and ${CONTAINER_NAME}:latest"
-    # docker push ${REGISTRY}.azurecr.io/${CONTAINER_NAME}:${VERSION}
-    # docker push ${REGISTRY}.azurecr.io/${CONTAINER_NAME}:latest
+    echo "Pushing image to: ${REGISTRY}.azurecr.io/${CONTAINER_NAME} and ${CONTAINER_NAME}:latest"
+    docker push ${REGISTRY}.azurecr.io/${CONTAINER_NAME}:${VERSION}
+    docker push ${REGISTRY}.azurecr.io/${CONTAINER_NAME}:latest
 
   displayName: 'Run npm build'
 
   
-- task: Docker@2
-  inputs:
-    containerRegistry: 'fb116db9-622e-4b02-b5ba-65cc76f2cb4f'
-    command: 'buildAndPush'
-    tags: '${REGISTRY}.azurecr.io/${CONTAINER_NAME}:${VERSION}
-${REGISTRY}.azurecr.io/${CONTAINER_NAME}:latest'
+# - task: Docker@2
+#   inputs:
+#     containerRegistry: 'fb116db9-622e-4b02-b5ba-65cc76f2cb4f'
+#     command: 'buildAndPush'
+#     tags: '${REGISTRY}.azurecr.io/${CONTAINER_NAME}:${VERSION}
+# ${REGISTRY}.azurecr.io/${CONTAINER_NAME}:latest'
