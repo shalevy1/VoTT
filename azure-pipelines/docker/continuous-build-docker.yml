@@ -58,7 +58,7 @@ steps:
     npm run build
 
     # echo "Setting Azure subscription to: ${AZURE_SUB_NAME}"
-    az account set --subscription ${AZURE_SUB_ID}
+    # az account set --subscription ${AZURE_SUB_ID}
 
     echo "Logging into ACR ${REGISTRY}"
     az acr login --name ${REGISTRY}
