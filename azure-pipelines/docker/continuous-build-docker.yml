@@ -83,6 +83,5 @@ steps:
   inputs:
     containerRegistry: 'fb116db9-622e-4b02-b5ba-65cc76f2cb4f'
     command: 'buildAndPush'
-    repository: 'vott-repo'
     tags: '${REGISTRY}.azurecr.io/${CONTAINER_NAME}:${VERSION}
 ${REGISTRY}.azurecr.io/${CONTAINER_NAME}:latest'
